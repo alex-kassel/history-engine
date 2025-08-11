@@ -16,7 +16,7 @@
     "illuminate/session": "^10.0|^11.0",
     "illuminate/cache": "^10.0|^11.0",
     "illuminate/redis": "^10.0|^11.0"
-  ],
+  },
   "autoload": {
     "psr-4": {
       "AlexKassel\\HistoryEngine\\": "src/"
