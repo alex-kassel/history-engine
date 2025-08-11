@@ -1,0 +1,37 @@
+{
+  "name": "alex-kassel/history-engine",
+  "description": "Storage-agnostic history engine for Laravel with Session/Cache/Redis drivers and LNavi-like command adapter.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alex Kassel",
+      "email": "dev@example.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "illuminate/support": "^10.0|^11.0",
+    "illuminate/contracts": "^10.0|^11.0",
+    "illuminate/session": "^10.0|^11.0",
+    "illuminate/cache": "^10.0|^11.0",
+    "illuminate/redis": "^10.0|^11.0"
+  ],
+  "autoload": {
+    "psr-4": {
+      "AlexKassel\\HistoryEngine\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "AlexKassel\\HistoryEngine\\HistoryEngineServiceProvider"
+      ],
+      "aliases": {
+        "HistoryEngine": "AlexKassel\\HistoryEngine\\Facades\\HistoryEngine"
+      }
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
