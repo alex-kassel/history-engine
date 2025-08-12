@@ -121,35 +121,6 @@ class Engine
         return $data['items'][$index];
     }
 
-    public function applyCommand(string $command): ?string
-    {
-        $command = trim($command);
-
-        if ($command === '<<') {
-            return $this->goToStart();
-        }
-        if ($command === '>>') {
-            return $this->goToEnd();
-        }
-        if ($command === '<') {
-            return $this->stepBack();
-        }
-        if ($command === '>') {
-            return $this->stepForward();
-        }
-        if (preg_match('/^<>(\\d+)$/', $command, $m)) {
-            return $this->goToIndex((int) $m[1]);
-        }
-        if (preg_match('/^<(\\d+)$/', $command, $m)) {
-            return $this->stepBack((int) $m[1]);
-        }
-        if (preg_match('/^>(\\d+)$/', $command, $m)) {
-            return $this->stepForward((int) $m[1]);
-        }
-
-        throw new HistoryEngineException("Unsupported command [{$command}]");
-    }
-
     /** @return array{items: array<int, string>, pointer: int} */
     private function load(): array
     {
