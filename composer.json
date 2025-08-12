@@ -1,6 +1,6 @@
 {
   "name": "alex-kassel/history-engine",
-  "description": "Storage-agnostic history engine for Laravel with Session/Cache/Redis drivers and LNavi-like command adapter.",
+  "description": "Storage-agnostic history engine for Laravel.",
   "type": "library",
   "license": "MIT",
   "authors": [

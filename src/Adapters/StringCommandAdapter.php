@@ -9,15 +9,17 @@ use AlexKassel\HistoryEngine\Exceptions\HistoryEngineException;
 
 final class StringCommandAdapter
 {
-    // Define command constants
+    // Simple command constants
+    private const CMD_CLEAR = '@';
     private const CMD_START = '<<';
     private const CMD_END = '>>';
     private const CMD_BACK = '<';
     private const CMD_FORWARD = '>';
 
-    private const CMD_INDEX = '<>(%d)';
-    private const CMD_BACK_N = '<(%d)';
-    private const CMD_FORWARD_N = '>(%d)';
+    // Regex command constants
+    private const CMD_INDEX = '<>(\d+)';
+    private const CMD_BACK_N = '<(\d+)';
+    private const CMD_FORWARD_N = '>(\d+)';
 
     public function __construct(private readonly Engine $engine)
     {
@@ -29,6 +31,7 @@ final class StringCommandAdapter
 
         // Simple command map
         $simpleCommands = [
+            self::CMD_CLEAR   => 'clear',
             self::CMD_START   => 'goToStart',
             self::CMD_END     => 'goToEnd',
             self::CMD_BACK    => 'stepBack',
@@ -36,7 +39,7 @@ final class StringCommandAdapter
         ];
 
         if (array_key_exists($command, $simpleCommands)) {
-            return $this->{$simpleCommands[$command]}();
+            return $this->engine->{$simpleCommands[$command]}();
         }
 
         // Regex command map
